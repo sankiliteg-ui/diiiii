@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Better on Android + notches -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Good Night, Sister ✨🌙</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,36 +109,42 @@
     .dp-ring{ position:absolute; inset:-6px; border-radius:50%; background: conic-gradient(from 0deg, #7dffef, #ffd166, #ff77c8, #7a5cff, #7dffef); filter: blur(6px); opacity:.8; animation: spin 6s linear infinite }
     @keyframes spin{ to{ transform: rotate(360deg) } }
 
-    /* Android / small-phone tuning */
-    @media (max-width: 480px){
+    /* ---------- ANDROID-OPTIMIZED MEDIA QUERIES ---------- */
+
+    /* Most Android phones (portrait) */
+    @media screen and (max-width: 430px) and (hover: none) and (pointer: coarse){
       body{ overflow:auto; }
-      .title{font-size: 40px;}
-      .subtitle{font-size: 15px;}
-      .ticker{height: 44px;}
-      .line{font-size: 16px;}
-      .btn{padding: 13px 16px; font-size: 15px; border-radius:14px}
-      .actions{gap:10px}
-      .card{padding:18px; border-radius:20px}
-      .moon{width:70px;height:70px;top:18px;left:18px}
-      .cloud{top:70px;left:78px;transform:scale(.8)}
+      .wrap{ padding:16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+      .card{ padding:16px; border-radius:20px; }
+      .title{ font-size: clamp(28px, 9vw, 40px); }
+      .subtitle{ font-size: 14px; }
+      .ticker{ height: 40px; }
+      .line{ font-size: 15px; }
+      .actions{ gap:10px }
+      .btn{ padding:14px 16px; font-size:15px; min-height:48px; border-radius:14px }
+      .moon{ width:72px; height:72px; top:16px; left:16px }
+      .cloud{ top:74px; left:86px; transform:scale(.85) }
       .dp-wrap{ top:12px; right:12px; width:92px; height:92px }
       .dp-wrap img{ width:84px; height:84px }
     }
-    @media (max-width: 390px){
-      .title{font-size: 34px}
-      .subtitle{font-size: 14px}
-      .line{font-size: 15px}
-      .ticker{height: 40px}
+
+    /* Very small Android widths (≤360px) */
+    @media screen and (max-width: 360px) and (hover: none) and (pointer: coarse){
+      .title{ font-size: clamp(24px, 10vw, 34px) }
+      .subtitle{ font-size: 13px }
+      .ticker{ height: 36px }
+      .line{ font-size: 14px }
+      .btn{ font-size:14px; padding:12px 14px }
     }
-    @media (hover: none) and (pointer: coarse){
-      .btn{min-height:48px; padding:14px 18px}
-      .card{box-shadow: 0 12px 36px rgba(0,0,0,.55)}
+
+    /* Android landscape short screens */
+    @media (orientation: landscape) and (max-height: 420px) and (hover: none) and (pointer: coarse){
+      .wrap{ align-items:flex-start }
+      .card{ margin-top: 8px }
+      .title{ font-size: clamp(22px, 6vw, 36px) }
     }
-    @media (orientation: landscape) and (max-height: 480px){
-      .wrap{align-items:flex-start}
-      .card{margin-top: 16px}
-      .title{font-size: clamp(28px, 7vw, 48px)}
-    }
+
+    /* Respect battery saver / reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{animation: none !important; transition: none !important}
     }
@@ -154,14 +161,14 @@
       <div class="dp-wrap" aria-label="profile photo">
         <div class="dp-ring"></div>
         <!-- 👇 Replace src with your image path or URL -->
-        <img id="dpImg" alt="Your DP" src="ANKKU.jpg"/>
+        <img id="dpImg" alt="Your DP" src="t7.jpg"/>
       </div>
 
       <h1 class="title">
         <span class="shine" aria-hidden="true"></span>
-        Good Night DIDI<span class="blink">Sister</span> 🌙✨
+        Good Night Boss<span class="blink">Sister</span> 🌙
       </h1>
-      <p class="subtitle">Aaj neend VIP aayegi — full 😴 deluxe service, dreams pe <b>no compromise!</b> 💅💤</p>
+      <p class="subtitle">KYU BHAI ETNA CUTE KY HAI TU ... <b>no compromise!</b> 💅</p>
 
       <div class="ticker" aria-live="polite">
         <div class="line">😌 "Dimag ko aeroplane mode — kal subah hi take-off!"</div>
@@ -171,13 +178,12 @@
       </div>
 
       <div class="actions">
-        
         <button class="btn" id="sparkBtn">✨ Chamkao Text</button>
         <button class="btn alt" id="pyarBtn">💖 Send Pyar</button>
         <button class="btn" id="desiBtn">🪩 Desi Mode</button>
       </div>
 
-      <p class="tiny">Made By TUGGU </p>
+      <p class="tiny">Made By TUGGU</p>
     </section>
   </div>
 
