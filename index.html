@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Good Night, Sister ✨🌙</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b1020; --bg2:#080c18; --neon:#7dffef; --pink:#ff77c8; --gold:#ffd166; --vio:#7a5cff; --lime:#b8ff6a;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Baloo 2", sans-serif;
+      background: radial-gradient(1200px 800px at 70% 10%, #161b35 0%, var(--bg1) 35%, var(--bg2) 100%);
+      color:#e7eeff; overflow:hidden;
+    }
+    .stars{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .star{position:absolute; width:2px; height:2px; background: white; border-radius:50%; opacity:.6; filter: drop-shadow(0 0 6px #fff)}
+    @keyframes twinkle{ 50%{opacity:.1; transform:scale(.6)} }
+
+    .wrap{position:relative; z-index:2; min-height:100%; display:flex; align-items:center; justify-content:center; padding:24px}
+    .card{
+      position:relative;
+      width:min(920px, 95vw);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:28px; padding:28px; backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.6), inset 0 0 40px rgba(125,255,239,.05);
+    }
+
+    .title{
+      font-family:"Baloo 2", system-ui, sans-serif;
+      font-size: clamp(40px, 7vw, 86px);
+      line-height:1.05; margin: 8px 0 4px; text-align:center; font-weight:800;
+      background: linear-gradient(90deg, #fff, var(--neon), var(--gold), #fff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 8px 24px rgba(255,255,255,.15));
+      position:relative;
+    }
+    .title .blink{animation: blink 1.2s infinite steps(2, jump-none)}
+    @keyframes blink{ 50%{opacity:.35} }
+    .shine{
+      position:absolute; inset:0; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.28) 40%, transparent 60%);
+      transform: translateX(-120%);
+      animation: sweep 3.8s infinite ease-in-out;
+      border-radius: 16px;
+    }
+    @keyframes sweep{ 20%{transform:translateX(130%)} 100%{transform:translateX(130%)} }
+
+    .subtitle{ text-align:center; margin:0 0 16px; opacity:.9; font-weight:500 }
+
+    .ticker{
+      position:relative; overflow:hidden; height:52px; margin:18px auto; max-width:780px;
+      border-radius:14px; border:1px solid rgba(255,255,255,.18);
+      box-shadow: inset 0 0 24px rgba(125,255,239,.12);
+      background: linear-gradient(90deg, rgba(125,255,239,.06), rgba(255,119,200,.06));
+    }
+    .line{ position:absolute; inset:0; display:grid; place-items:center; font-weight:700; font-size: clamp(16px, 2.8vw, 22px);
+      text-shadow: 0 0 14px rgba(125,255,239,.35), 0 0 24px rgba(255,215,0,.35);
+      opacity:0; transform: translateY(30%);
+      animation: slideIn 12s infinite;
+    }
+    .line:nth-child(2){ animation-delay: 3s }
+    .line:nth-child(3){ animation-delay: 6s }
+    .line:nth-child(4){ animation-delay: 9s }
+    @keyframes slideIn{
+      0%{opacity:0; transform:translateY(30%)}
+      8%{opacity:1; transform:translateY(0)}
+      25%{opacity:1; transform:translateY(0)}
+      33%{opacity:0; transform:translateY(-20%)}
+      100%{opacity:0; transform:translateY(-20%)}
+    }
+
+    .actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:18px 0 }
+    .btn{
+      cursor:pointer; border:none; padding:14px 18px; border-radius:16px; font-weight:800; letter-spacing:.3px;
+      color:#0a0f1c; background: linear-gradient(180deg, var(--gold), #ffb703);
+      box-shadow: 0 8px 18px rgba(255,215,0,.25), inset 0 -2px 0 rgba(0,0,0,.15);
+      transition: transform .15s ease, box-shadow .15s ease; user-select:none
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px rgba(255,215,0,.35), inset 0 -2px 0 rgba(0,0,0,.2) }
+    .btn.alt{ background: linear-gradient(180deg, var(--neon), #7de3ff); box-shadow: 0 8px 18px rgba(125,255,239,.25), inset 0 -2px 0 rgba(0,0,0,.15) }
+
+    .tiny{ text-align:center; opacity:.7; font-size:13px; margin-top:10px }
+
+    .float-area{ position:fixed; inset:0; pointer-events:none; z-index:3 }
+    .emoji{ position:absolute; font-size:24px; will-change: transform, opacity; filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)) }
+
+    .moon{ position:absolute; top:60px; left:60px; width:110px; height:110px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff 0%, #f7f7ff 45%, #c0c4ff 60%, rgba(0,0,0,0) 70%);
+      box-shadow: 0 0 24px rgba(255,255,255,.35), 0 0 80px rgba(125,255,239,.25);
+      z-index:1; animation: gentle 6s ease-in-out infinite alternate
+    }
+    @keyframes gentle{ from{ transform: translateY(-4px)} to{ transform: translateY(6px)} }
+    .cloud{ position:absolute; background: rgba(255,255,255,.08); filter: blur(2px); border-radius: 40px; height: 28px; width: 110px; left: 160px; top: 120px; animation: drift 22s linear infinite }
+    .cloud::before,.cloud::after{ content:""; position:absolute; background: inherit; height:36px; width: 76px; border-radius:40px; top:-14px }
+    .cloud::before{ left:-18px }
+    .cloud::after{ left:70px }
+    @keyframes drift{ from{ transform: translateX(0)} to{ transform: translateX(40vw)} }
+
+    /* DP (static, no change) */
+    .dp-wrap{ position:absolute; top:18px; right:18px; width:120px; height:120px; border-radius:50%; display:grid; place-items:center; }
+    .dp-wrap img{ width:108px; height:108px; object-fit:cover; border-radius:50%; border:3px solid rgba(255,255,255,.65); box-shadow: 0 8px 22px rgba(0,0,0,.35), 0 0 24px rgba(125,255,239,.25); background:#cbd5ff }
+    .dp-ring{ position:absolute; inset:-6px; border-radius:50%; background: conic-gradient(from 0deg, #7dffef, #ffd166, #ff77c8, #7a5cff, #7dffef); filter: blur(6px); opacity:.8; animation: spin 6s linear infinite }
+    @keyframes spin{ to{ transform: rotate(360deg) } }
+
+    /* Android / small-phone tuning */
+    @media (max-width: 480px){
+      body{ overflow:auto; }
+      .title{font-size: 40px;}
+      .subtitle{font-size: 15px;}
+      .ticker{height: 44px;}
+      .line{font-size: 16px;}
+      .btn{padding: 13px 16px; font-size: 15px; border-radius:14px}
+      .actions{gap:10px}
+      .card{padding:18px; border-radius:20px}
+      .moon{width:70px;height:70px;top:18px;left:18px}
+      .cloud{top:70px;left:78px;transform:scale(.8)}
+      .dp-wrap{ top:12px; right:12px; width:92px; height:92px }
+      .dp-wrap img{ width:84px; height:84px }
+    }
+    @media (max-width: 390px){
+      .title{font-size: 34px}
+      .subtitle{font-size: 14px}
+      .line{font-size: 15px}
+      .ticker{height: 40px}
+    }
+    @media (hover: none) and (pointer: coarse){
+      .btn{min-height:48px; padding:14px 18px}
+      .card{box-shadow: 0 12px 36px rgba(0,0,0,.55)}
+    }
+    @media (orientation: landscape) and (max-height: 480px){
+      .wrap{align-items:flex-start}
+      .card{margin-top: 16px}
+      .title{font-size: clamp(28px, 7vw, 48px)}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{animation: none !important; transition: none !important}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="moon"></div>
+  <div class="cloud"></div>
+
+  <div class="wrap">
+    <section class="card">
+      <!-- Static DP (no change buttons) -->
+      <div class="dp-wrap" aria-label="profile photo">
+        <div class="dp-ring"></div>
+        <!-- 👇 Replace src with your image path or URL -->
+        <img id="dpImg" alt="Your DP" src="ANKKU.jpg"/>
+      </div>
+
+      <h1 class="title">
+        <span class="shine" aria-hidden="true"></span>
+        Good Night DIDI<span class="blink">Sister</span> 🌙✨
+      </h1>
+      <p class="subtitle">Aaj neend VIP aayegi — full 😴 deluxe service, dreams pe <b>no compromise!</b> 💅💤</p>
+
+      <div class="ticker" aria-live="polite">
+        <div class="line">😌 "Dimag ko aeroplane mode — kal subah hi take-off!"</div>
+        <div class="line">🤫 "Gud Night! Baki ki gossip kal — promise, bilkul fresh."</div>
+        <div class="line">😴 "Kambal + Takia + Thodi si shanti = Life set!"</div>
+        <div class="line">💖 "Sapnon me bhi attitude full — par dil se simple!"</div>
+      </div>
+
+      <div class="actions">
+        
+        <button class="btn" id="sparkBtn">✨ Chamkao Text</button>
+        <button class="btn alt" id="pyarBtn">💖 Send Pyar</button>
+        <button class="btn" id="desiBtn">🪩 Desi Mode</button>
+      </div>
+
+      <p class="tiny">Made By TUGGU </p>
+    </section>
+  </div>
+
+  <div class="float-area" id="float"></div>
+
+  <script>
+    // === Make stars ===
+    const starBox = document.getElementById('stars');
+    const STAR_COUNT = window.matchMedia('(max-width: 480px)').matches ? 80 : 120;
+    for(let i=0;i<STAR_COUNT;i++){
+      const s = document.createElement('span');
+      s.className='star';
+      const x = Math.random()*100;
+      const y = Math.random()*100;
+      const sz = Math.random()*2.2 + .6;
+      s.style.left = x + 'vw';
+      s.style.top = y + 'vh';
+      s.style.width = sz + 'px';
+      s.style.height = sz + 'px';
+      s.style.animation = `twinkle ${3+Math.random()*5}s ${Math.random()}s infinite`;
+      starBox.appendChild(s);
+    }
+
+    // === Floating emojis ===
+    const float = document.getElementById('float');
+    const emojis = ['✨','🌙','💖','😴','💤','🌟','🫶','🤭','😌'];
+    function spawnEmoji(x,y){
+      const e = document.createElement('div');
+      e.className='emoji';
+      e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      e.style.left = x + 'px';
+      e.style.top = y + 'px';
+      const driftX = (Math.random()*120 - 60);
+      const duration = 1400 + Math.random()*900;
+      const start = performance.now();
+      const startSize = 18 + Math.random()*16;
+      const endY = y - (120 + Math.random()*140);
+
+      function frame(t){
+        const p = Math.min(1, (t - start) / duration);
+        const ease = 1 - Math.pow(1-p, 3);
+        const curX = x + driftX*ease;
+        const curY = y + (endY - y)*ease;
+        const scale = 1 + .6*ease;
+        e.style.transform = `translate(-50%,-50%) translate(${curX - x}px, ${curY - y}px) scale(${scale})`;
+        e.style.opacity = 1 - ease;
+        e.style.fontSize = (startSize + 10*ease) + 'px';
+        if(p<1){ requestAnimationFrame(frame) } else { e.remove() }
+      }
+      requestAnimationFrame(frame);
+      float.appendChild(e);
+    }
+
+    // Tap / click spawns emojis
+    window.addEventListener('pointerdown', (ev)=>{
+      spawnEmoji(ev.clientX, ev.clientY);
+    });
+
+    // Buttons
+    const title = document.querySelector('.title');
+    document.getElementById('sparkBtn').addEventListener('click', ()=>{
+      title.classList.remove('pop');
+      void title.offsetWidth;
+      title.classList.add('pop');
+      const shine = title.querySelector('.shine');
+      shine.style.animation='none';
+      void shine.offsetWidth;
+      shine.style.animation='sweep 1.8s ease-in-out';
+      const rect = title.getBoundingClientRect();
+      for(let i=0;i<6;i++){
+        const rx = rect.left + Math.random()*rect.width;
+        const ry = rect.top + Math.random()*rect.height;
+        spawnEmoji(rx, ry);
+      }
+    });
+
+    const desiBtn = document.getElementById('desiBtn');
+    let desiOn = false;
+    const extraLines = [
+      '🛌 "Sona hai par chat last seen check karke!"',
+      '😴 "Dreams me Starbucks free — lekin cutting chai hi best!"',
+      '🧸 "Tension ko raat ke dustbin me daal do — kal naya din!"',
+      '🌙 "Good Night ji — aankhon pe night mode, dil pe no load!"'
+    ];
+    desiBtn.addEventListener('click', ()=>{
+      desiOn = !desiOn; desiBtn.textContent = desiOn ? '🪩 Desi Mode ON' : '🪩 Desi Mode';
+      const ticker = document.querySelector('.ticker');
+      ticker.innerHTML = '';
+      const list = desiOn ? extraLines : [
+        '😌 "Dimag ko aeroplane mode — kal subah hi take-off!"',
+        '🤫 "Gud Night! Baki ki gossip kal — promise, bilkul fresh."',
+        '😴 "Kambal + Takia + Thodi si shanti = Life set!"',
+        '💖 "Sapnon me bhi attitude full — par dil se simple!"'
+      ];
+      list.forEach((txt,i)=>{
+        const d=document.createElement('div');
+        d.className='line'; d.style.animationDelay = (i*3)+'s'; d.textContent = txt; ticker.appendChild(d);
+      });
+    });
+
+    const pyarBtn = document.getElementById('pyarBtn');
+    const card = document.querySelector('.card');
+    pyarBtn.addEventListener('click', ()=>{
+      const rect = pyarBtn.getBoundingClientRect();
+      for(let i=0;i<12;i++){
+        spawnEmoji(rect.left + rect.width/2, rect.top);
+      }
+      card.animate([
+        { transform:'scale(1)' },
+        { transform:'scale(1.02)' },
+        { transform:'scale(1)' }
+      ], { duration: 420, easing:'cubic-bezier(.2,.8,.2,1)' });
+    });
+
+    // Ambient sparkle on load
+    setTimeout(()=>{
+      const midX = window.innerWidth/2;
+      const midY = window.innerHeight/3;
+      for(let i=0;i<8;i++) spawnEmoji(midX + (Math.random()*160-80), midY + (Math.random()*30-20));
+    }, 500);
+  </script>
+</body>
+</html>
